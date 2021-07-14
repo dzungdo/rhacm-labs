@@ -33,7 +33,7 @@ metadata:
   labels:
     app: acm-test-app
   annotations:
-    apps.open-cluster-management.io/github-path: resources/acm-test
+    apps.open-cluster-management.io/github-path: resources/acm-test-project
 spec:
   channel: acm-test/acm-test-app-latest
   placement:
