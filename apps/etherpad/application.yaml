@@ -1,9 +1,9 @@
 ---
 apiVersion: apps.open-cluster-management.io/v1
 kind: Channel
-metadata:
-  name: acm-test-app-latest
-  namespace: acm-test-project
+metadata: 
+  name: etherpad-app-latest
+  namespace: acm-etherpad
 spec:
   type: GitHub
   pathname: https://github.com/dzungdo/rhacm-labs.git
@@ -11,8 +11,8 @@ spec:
 apiVersion: app.k8s.io/v1beta1
 kind: Application
 metadata:
-  name: acm-test-app
-  namespace: acm-test-project
+  name: etherpad-app
+  namespace: acm-etherpad
 spec:
   componentKinds:
   - group: apps.open-cluster-management.io
@@ -23,21 +23,21 @@ spec:
     - key: app
       operator: In
       values:
-      - acm-test-app
+      - etherpad-app
 ---
 apiVersion: apps.open-cluster-management.io/v1
 kind: Subscription
 metadata:
-  name: acm-test-app
-  namespace: acm-test-project
+  name: etherpad-app
+  namespace: acm-etherpad
   labels:
-    app: acm-test-app
+    app: etherpad-app
   annotations:
-    apps.open-cluster-management.io/github-path: resources/acm-test-project
+    apps.open-cluster-management.io/github-path: resources/etherpad
 spec:
-  channel: acm-test/acm-test-app-latest
+  channel: acm-etherpad/etherpad-app-latest
   placement:
     placementRef:
       kind: PlacementRule
-      name: betadev-cluster
+      name: dev-clusters
 
